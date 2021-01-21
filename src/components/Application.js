@@ -32,6 +32,19 @@ export default function Application(props) {
 
   const eachAppointment = dailyAppointments.map(item => <Appointment key={item.id} {...item} />)
 
+  const schedule = appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview);
+  
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    );
+  });
+
   return (
     <main className="layout">
       <section className="sidebar">
