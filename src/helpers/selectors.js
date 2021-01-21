@@ -20,3 +20,15 @@ export function getInterview(state, interview) {
   newObj["interviewer"] = state.interviewers[interview.interviewer];
   return newObj;
 }
+
+export function getInterviewersForDay(state, interviewer) {
+  const found = state.days.find(element => element.name === interviewer);
+  if (found === undefined) {
+    return [];
+  }
+  let array = [];
+  for (const value of found.interviewers) {
+    array.push(state.interviewers[value]);
+  }
+  return array;
+}
