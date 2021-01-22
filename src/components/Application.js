@@ -52,7 +52,25 @@ export default function Application(props) {
       });
   }
 
-  //const eachAppointment = dailyAppointments.map(item => <Appointment key={item.id} {...item} />)
+  function cancelInterview(id) {
+    return axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    .then((res) => {
+      console.log(res);
+        //console.log(id, interview);
+        const appointment = {
+          ...state.appointments[id],
+          interview: null
+        };
+        const appointments = {
+          ...state.appointments,
+          [id]: appointment
+        };
+        setState({
+          ...state,
+          appointments
+        });
+    });
+  }
 
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
@@ -65,6 +83,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
