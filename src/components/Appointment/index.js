@@ -11,6 +11,7 @@ import Error from "./Error";
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const EDIT = "EDIT";
 const SAVING = "SAVING";
 const DELETE = "DELETE";
 const CONFIRM = "CONFIRM";
@@ -49,6 +50,10 @@ export default function Appointment(props) {
     transition(CONFIRM);
   }
 
+  function onEditAppointment(){
+    transition(EDIT)
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -58,9 +63,25 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={onCancelAppointment}
+          onEdit={onEditAppointment}
         />
       )}
-      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={save}/>}
+      {mode === CREATE && (
+        <Form
+        interviewers={props.interviewers}
+        onCancel={() => back()}
+        onSave={save}
+        />
+        )}
+      {mode === EDIT && (
+        <Form
+        name={props.interview.student}
+        interviewer={props.interview.interviewer && props.interview.interviewer.id}
+        interviewers={props.interviewers}
+        onSave={save}
+        onCancel={()=> back()}
+      />
+      )}
       {mode === SAVING && <Status message={SAVING}/>}
       {mode === CONFIRM && (
         <Confirm 
