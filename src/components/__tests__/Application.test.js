@@ -48,7 +48,7 @@ describe("Application", () => {
   });
 
   it("loads data, cancels an interview and increases the spots remaining for Monday by 1", async () => {
-
+    const { container } = render(<Application />);
   
     await waitForElement(() => getByText(container, "Archie Cohen"));
   
