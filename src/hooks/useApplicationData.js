@@ -57,14 +57,14 @@ export default function useApplicationData() {
 
   function bookInterview(id, interview) {
 
-    return axios.put(`http://localhost:8001/api/appointments/${id}`, { interview })
+    return axios.put(`/api/appointments/${id}`, { interview })
       .then((res) => {
         dispatchNewInterview(id, interview);
       });
   }
 
   function cancelInterview(id) {
-    return axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    return axios.delete(`/api/appointments/${id}`)
       .then((res) => {
         dispatchNewInterview(id);
       });
