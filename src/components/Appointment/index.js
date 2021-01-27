@@ -90,7 +90,7 @@ export default function Appointment(props) {
         onConfirm={onDelete}
         />
       )}
-      {mode === DELETE && <Status message='DELETING'/>}
+      {mode === DELETE && <Status message='Deleting'/>}
       {mode === ERROR_SAVE && (
         <Error 
         message='Could not save appointment'
