@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/node:12.16
+      - image: circleci/node:10.16
 
     working_directory: ~/client
 
@@ -12,12 +12,14 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm rebuild node-sass
       - run: npm install
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: rebuild node-sass
+          command: npm rebuild node-sass
       - run: npm test
 
 workflows:
