@@ -17,9 +17,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run:
-          name: rebuild node-sass
-          command: npm rebuild node-sass
       - run: npm test
 
 workflows:
