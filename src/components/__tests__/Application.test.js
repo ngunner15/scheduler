@@ -44,6 +44,7 @@ describe("Application", () => {
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")
     );
+
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 
@@ -59,7 +60,7 @@ describe("Application", () => {
     fireEvent.click(queryByAltText(appointment, "Delete"));
     expect(getByText(appointment, "Are you sure you would like to delete?")).toBeInTheDocument();
     fireEvent.click(getByText(appointment, "Confirm"));
-    expect(getByText(appointment, "DELETING")).toBeInTheDocument();
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
     await waitForElement(() => queryByAltText(appointment, "Add"));
     const day = getAllByTestId(container, "day").find((day) =>
       queryByText(day, "Monday")
@@ -138,7 +139,7 @@ describe("Application", () => {
     ).toBeInTheDocument();
 
     fireEvent.click(getByText(appointment, "Confirm"));
-    expect(getByText(appointment, "DELETING")).toBeInTheDocument();
+    expect(getByText(appointment, "Deleting")).toBeInTheDocument();
 
     await waitForElement(() =>
       getByText(appointment, "Could not delete appointment")
