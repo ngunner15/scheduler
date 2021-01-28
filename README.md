@@ -1,5 +1,14 @@
 # Interview Scheduler
 
+## Dependencies
+- axios
+- classnames
+- node-sass
+- normalize.css
+- react
+- react-dom
+- react-scripts
+
 ## Screenshots
 !["Screenshot of scheduler app"](https://github.com/ngunner15/scheduler/blob/master/docs/main_page.png?raw=true)
 !["Screenshot of scheduler app create appointment and show interviewrs"](https://github.com/ngunner15/scheduler/blob/master/docs/interviwers.png?raw=true)
